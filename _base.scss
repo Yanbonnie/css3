@@ -149,3 +149,9 @@ $BGCOLOR:        #ffffff;//bg color
     background: url(#{$URL}#{$name}) 0 0 no-repeat;
     @include prefixer(background-size,100% 100%);
 }
+
+/*
+@include prefixer(border-radius,REM(20))
+@include fullBg(REM(24),REM(24),'add.png');
+background: url($URL+'pre.png') no-repeat;
+*/
