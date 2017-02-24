@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+		<!--<meta name="viewport"   content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">-->
+		<title></title>
+		<style type="text/css">
+			h3{font-size: 0.15rem;}
+			p{
+				font-size: 15px;
+				font-weight: bold;
+			}
+		</style>
+		<script type="text/javascript">
+			/*
+			 * 网易的做法：(http://3g.163.com/touch/all?dataversion=A&version=v_standard)
+			 * （1）先拿设计稿竖着的横向分辨率除以100得到body元素的宽度： 
+			 *	如果设计稿基于iphone6，横向分辨率为750，body的width为750 / 100 = 7.5rem 
+			 *	如果设计稿基于iphone4/5，横向分辨率为640，body的width为640 / 100 = 6.4rem
+			 * （2）布局时，设计图标注的尺寸除以100得到css中的尺寸
+			 * 
+			 */
+			window.onload = function(){
+				var deviceWidth = document.documentElement.clientWidth;
+				if(deviceWidth > 750) deviceWidth = 750;
+				document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+			}
+		</script>
+		
+	</head>
+	<body>
+		<h3>我是来测试的</h3>
+		<p>我是来测试的</p>
+	</body>
+</html>
