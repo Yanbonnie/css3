@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				padding: 0;margin: 0;
+			}
+			header{
+				display: flex;
+				height: 100px;
+				width: 100%;
+				padding: 20px 0;
+			}
+			.left{
+				flex-basis: 300px;
+				background: #ff0;
+				height: 100px;
+				position: relative;
+			}
+			.left .circle{
+				width: 100px;
+				height: 100px;
+				border-radius: 100%;
+				display: block;
+				background: #000;
+				position: relative;								
+				behavior: url(PIE.htc);
+				box-shadow: 0 0 5px 5px #f00;
+				margin-left: 100px;
+				}
+			.center{
+				background: #dedede;
+				flex-grow: 1;
+				position: relative;
+			}
+			.right{
+				background: #ccc;
+				height: 100px;
+				flex-basis: 100px;
+			}	
+			/*
+			 * 当前元素一定要有定位属性，像是position:relative或是position:absolute属性。
+			 * z-index值一定要比周围元素的要高，否则……只能说抱歉了~~
+			 * behavior: url(PIE.htc);
+			 */		
+		</style>
+		<!--[if lt IE 9]>
+			<script src="html5shiv.min.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<header>
+			<div class="left">
+				<span class="circle"></span>
+			</div>
+			<div class="center"></div>
+			<div class="right"></div>
+		</header>
+	</body>
+</html>
