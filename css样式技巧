@@ -1,0 +1,59 @@
+1、禁止选中
+.noCopy{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;-o-user-select:none;user-select:none;}
+
+2、清除浮动
+  方法一： 父级div定义 overflow: auto/hidden
+    .over-flow{
+        overflow: auto; zoom: 1; //zoom: 1; 是在处理兼容性问题
+    }
+
+  方法二： 据说是最高大上的方法 :after 方法
+    .outer{border: 1px solid #ccc;background: #fc9;color: #fff; margin: 50px auto;padding: 50px;}
+    .clearfix:after {content:'.';display:block;clear:both;visibility:hidden;zoom:1 width: 0;height: 0; }
+    <div class="outer clearfix"></div>
+
+    使用after伪对象清除浮动
+    after伪对象非IE浏览器支持，所以并不影响到IE/WIN浏览器。具体写法可参照以下示例。使用中需注意以下几点。
+    a、该方法中必须为需要清除浮动元素的伪对象中设置height:0，否则该元素会比实际高出若干像素；
+    b、content属性是必须的，但其值可以为空，蓝色理想讨论该方法的时候content属性的值设为"."
+  
+3、css3 控制文本超出后自动隐藏 属性 首页，元素必须是定宽的，然后加入如下css代码：
+  .shengl{
+    word-break:keep-all;/* 不换行 */
+    white-space:nowrap;/* 不换行 */
+    overflow:hidden;/* 内容超出宽度时隐藏超出部分的内容 */
+    text-overflow:ellipsis;
+  }
+4、媒体查询
+    @media only screen and (max-device-height:480px){}
+    @media only screen and (min-device-height:603px){   针对屏幕
+         .index{background:url(../images/background.jpg) no-repeat center top ;background-size:100% auto;}
+    }
+
+    @media only screen and (min-height: 603px){} 兼容 针对窗口
+5、/*/解决苹果手机input按钮的圆形问题*/
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button { -webkit-appearance: none; }
+    
+    自定义form样式需添加-webkit-appearance: none;
+    
+6、placeholder颜色修改
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+      color: #000;
+    }
+    
+7、硬件加速
+    .cube {
+       -webkit-transform: translate3d(0, 0, 0);
+       -moz-transform: translate3d(0, 0, 0);
+       -ms-transform: translate3d(0, 0, 0);
+       transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility :hidden; backface-visibility: hidden;-moz-backface-visibility: hidden;
+    }
+8、解决手机页面，长按图片或其他对象，会对应弹出菜单
+      css统一加上
+      -webkit-user-select:none;
+      -webkit-touch-callout:none;
+      或者 ontouchstart = "return false;"
