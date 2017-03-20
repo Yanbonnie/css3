@@ -1,0 +1,280 @@
+在 CSS中常用特殊字符识别表:
+
+所有浏览器 通用 height: 100px;
+IE6 专用 _height: 100px;
+IE7 专用 *+height: 100px;
+IE6、IE7 共用 *height: 100px;
+
+http://www.w3cplus.com/css/browser-hacks.html (浏览器hack)
+
+
+
+1、Css if hack条件语法
+< !--[if IE]> Only IE <![endif]-->
+仅所有的WIN系统自带IE可识别
+< !--[if IE 5.0]> Only IE 5.0 <![endif]-->
+只有IE5.0可以识别
+< !--[if gt IE 5.0]> Only IE 5.0+ <![endif]-->
+IE5.0包换IE5.5都可以识别
+< !--[if lt IE 6]> Only IE 6- <![endif]-->
+仅IE6可识别
+< !--[if gte IE 6]> Only IE 6/+ <![endif]-->
+IE6以及IE6以下的IE5.x都可识别
+
+
+<!--[if lte IE 7]> Only IE 7/- <![endif]-->
+仅IE7可识别
+< !--[if gte IE 7]> Only IE 7/+ <![endif]-->
+IE7以及IE7以下的IE6、IE5.x都可识别
+
+
+<!--[if IE 8]> Only IE 8/- <![endif]-->
+仅IE8可识别
+
+
+<!--[if IE 9]> Only IE 9/- <![endif]-->
+仅IE9可识别
+
+
+- 容器不扩展问题
+
+解决办法：在divGroup里面加上overflow:hidden;zoom:1;
+ps:很多人都是在里面加个清除浮动空标签来解决，其实这个是错误办法。太增加代码量了
+
+2.margin双边距问题
+
+设置为float的div在ie下设置的margin会加倍。这是一个ie6都存在的bug。
+解决办法是在这个div里面加上display:inline;
+ps:我一般很少用margin，一般情况用padding来控制边距，以免出现另外的bug
+
+
+3. ie6下空标签高度问题
+一个空div如果高度设置为0到19px，IE6下高度默认始终19PX。
+
+解决方法有3种：
+1.css里面加上overflow:hidden;
+2.div里面加上注释,
+
+<div class="c"><!– –></div>
+
+3.css里面加上line-height:0;然后div里面加上 ；
+
+
+4. 去掉图片热点链接或超链接的虚线框
+
+<a href="#" onFocus=this.blur()>hemin</a>
+
+
+5. IE6下当层高低于10px时,会出现高度在定义值上加10px的效果,最简单的方法就是在该层样式中加入:
+
+font-size:0;
+
+
+6. 空div在IE(FF中没有)是有默认高度的,可以用定义:
+
+div { width:100%; ling-height:0}
+
+
+7. 超链接访问过后hover样式就不出现的问题:
+
+ps:被点击访问过的超链接样式不在具有hover和active了,很多人应该都遇到过这个问题，解决方法是改变CSS属性的排列顺序: L-V-H-A
+
+
+8.IE6下为什么图片下方有空隙产生:
+
+ps:解决这个BUG的方法也有很多，可以是改变html的排版，或者设置img 为display:block
+或者设置vertical-align属性为vertical-align:top | bottom |middle |text-bottom
+都可以解决.
+
+
+9. IE6下两个层中间有间隙:
+
+ps:这个IE的3PX BUG也是经常出现的，解决的办法是给.right也同样浮动 float:left 或者相对IE6定义.left margin-right:-3px;
+
+
+10. 如何对齐文本与文本输入筐:
+
+ps:遇到此种问题，设置文本框的vertical-align:middle 就可以了
+
+
+11. 为什么web标准中IE无法设置滚动条颜色了:
+
+ps:解决办法是将body换成html
+
+
+12. 怎么样才能让层显示在FLASH之上呢:
+
+ps:解决的办法是给FLASH设置透明
+
+
+13. CSS透明属性:
+
+.transparent_class {
+    filter:alpha(opacity=50);/*; 这个是为IE6设的，可取值在0-100，其它三个0到1. */
+    -moz-opacity:0.5;/*这个是为了支持一些老版本的Mozilla浏览器。*/
+    -khtml-opacity: 0.5;/*这个为了支持一些老版本的Safari浏览器。 */
+    opacity: 0.5;/*opacity: 0.5; 这是最重要的，因为它是CSS标准.该属性支持Firefox, Safari和 Opera. */
+}
+
+
+14. IE6下英文字体跟中文字体不能对齐:
+
+Ps：解决办法：中英文都统一使用“宋体”。
+
+
+15. FF下给 div 设置 padding 后会导致 width 和 height 增加, 但IE不会.
+
+(可用!important解决)
+
+
+16. 页面居中问题
+
+body {TEXT-ALIGN: center;} 在IE下足够了，但FF下失效。解决办法：加上"MARGIN-RIGHT: auto; MARGIN-LEFT: auto;
+
+
+17.ie6下严重的bug，float元素如没定义宽度，内部如有div定义了height或zoom:1，这个div就会占满一整行，即使你给了宽度。
+
+float元素如果作为布局用或复杂的容器，都要给个宽度的
+
+
+18. 3像素间距bug
+
+ 在IE6中当文本(或无浮动元素)跟在一个浮动的元素之后文本和这个浮动元素之间会多出3像素的间隔。
+
+给浮动层添加 display:inline 和 -3px 负值margin 给中间的内容层定义 margin-right 以纠正-3px
+
+
+19、横向列表宽度bug
+
+如果你使用float:left;把<li>横向摆列并且<li>内包含的<a>或其他触发了 hasLayout在IE6下就会有错误的表现。
+
+解决方法很简单只需要给<a>定义同样的float:left;即可。
+
+
+20、列表阶梯bug
+
+列表阶梯bug通常会在给<li>的子元素<a>使用float:left;时触发我们本意是要做一个横向的列表(通常 是导航栏)但IE却可能呈现出垂直的或者阶梯状。
+
+解决办法就是给<li>定义float:left;而非子元素<a>或者 给<li>定义display:inline;也可以解决。
+
+
+21.margin负值隐藏：
+
+hasLayout的父元素内的非hasLayout元素，使用负边距时，超出父元素部分不可见
+
+去掉父元素的hasLayout；或者赋hasLayout给子元素,并添加position:relative;
+
+
+22.IE6中奇数宽高的BUG
+IE6还有奇数宽高的bug，解决方案就是将外部相对定位的div宽度改成偶数。
+
+
+23.IE6 position:fixed 无法使用
+
+eg：#top{
+position:fixed;
+bottom:0;
+right:20px;
+}实现让 <div id="top">...</div> 元素固定在浏览器的底部和距离右边的20个像素。
+
+实现：
+
+#top{
+position:fixed;
+_position:absolute;
+bottom:0;
+right:20px;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+}
+
+使元素固定在浏览器的顶部：#top{
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop));
+}使元素固定在浏览器的底部：#top{
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+}这两段代码只能实现在最底部跟最顶部，你可以使用 _margin-top:10px; 或者 _margin-bottom:10px; 修改其中的数值控制元素的位置。
+
+position:fixed; 闪动问题
+
+现在，问题还没有完全解决。在用了上面的办法后，你会发现：被固定定位的元素在滚动滚动条的时候会闪动。解决闪动问题的办法是在 CSS 文件中加入：*html{
+background-image:url(about:blank);
+background-attachment:fixed;
+}其中 * 是给 IE6 识别的。
+
+24.***IE下png图片背景不透明
+
+使用插件DD_belatedPNG.js
+
+
+使用方法：在head之间加上
+
+<!--[if IE 6]>
+
+<script type="text/javascript"  src="static/js/DD_belatedPNG.js" ></script>
+
+<script type="text/javascript">
+
+DD_belatedPNG.fix('.memberLeft,background');
+
+</script>
+
+<![endif]-->
+
+*****.memberLeft,background要透明的类名或是标签
+
+
+25.IE下z-index的bug
+
+在IE浏览器中，定位元素的z-index层级是相对于各自的父级容器，所以会导致z-index出现错误的表现。
+
+解决方法是给其父级元素定义z-index
+
+
+26.a浮动时，如果在转折的地方文字太长会撑破容器下移。
+
+PS：为a 增加white-space:nowrap;
+
+
+27.css中height：100%不起作用
+
+Ps：给html和body增加高度属性
+
+html,body{ margin:0px; height:100%; }
+
+
+- 图片与文字对齐排列
+
+Ps：默认的情况是图片顶对齐而文字底对齐，通过设置css属性可以使得图片与文字对齐。
+
+<a href="#"  style=” vertical-align:middle;”>珠岛花园店</a><img src="static/image/index/city.jpg"  style=” vertical-align:middle;”/>
+
+- 如何解决IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的BUG？
+
+方法：
+
+li{vertical-align:top;}
+
+除了top值，还可以设置为text-top | middle | bottom | text-bottom，甚至特定的<length>和<percentage>值都可以
+
+30.input与文字对齐
+
+<input type="radio" name="RadioGroup3" value="是" id="RadioGroup3_0" />
+
+<label>是</label>
+
+Ps：input,label { vertical-align:middle; font-family:Tahoma;}
+
+
+31. IE6下字符重复出现
+确保浮动元素设置了 display:inline;
+在浮动元素中使用 margin-right:-3px;
+
+31. 设置了display：inline-block属性的标签，父标签设置font-size:0;子标签才不会有空隙。子标签如果有文字要另外设置文字的大小。
+
+
+
+
