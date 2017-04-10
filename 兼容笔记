@@ -2,9 +2,9 @@
     (function(){
         var html = document.documentElement;
         var htmlW = html.clientWidth;
-        html.style.fontSize=htmlW/50+'px';
+        html.style.fontSize=htmlW/15+'px';
 
-        /*根据设计稿来定，如果设计稿是750，则取能被750整除的数据*/
+        /*根据设计稿来定，如果设计稿是750，则取能被750整除的数据,整除的数不要小于12px，因为在模拟器chrome下，最小字体为12px*/
     })()
     
     在sass部分设置
