@@ -1,0 +1,12 @@
+@import 'base.scss';
+.box{
+    width: REM(375);
+    height: REM(375);
+    background: #000;
+}
+.box2{
+    width: REM(375);
+    height: REM(375);
+    background: green;
+    float: right;
+}
